@@ -1,0 +1,17 @@
+This package was debianized by Cyril Bouthors <cyril@boutho.rs> on
+Fri Jun 13 17:54:58 CEST 2014
+
+It was downloaded from <https://github.com/ISVTEC/cron2nagios>
+
+Upstream Author:
+
+    Cyril Bouthors <cyril@boutho.rs>
+
+Copyright:
+
+    <Copyright (C) 2014 Cyril Bouthors>
+
+License:
+
+The Debian packaging is (C) 2014, Cyril Bouthors <cyril@bouthors.org> and
+is licensed under the GPL, see `/usr/share/common-licenses/GPL'.

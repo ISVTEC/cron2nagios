@@ -1,0 +1,5 @@
+cron2nagios (1.0-1) unstable; urgency=low
+
+  * Initial release
+
+ -- Cyril Bouthors <cyril@bouthors.org>  Fri, 13 Jun 2014 17:53:15 +0200
