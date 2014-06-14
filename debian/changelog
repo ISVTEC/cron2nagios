@@ -1,3 +1,9 @@
+cron2nagios (1.0-2) unstable; urgency=medium
+
+  * bin/cron2nagios: define variables before using them.
+
+ -- Cyril Bouthors <cyril@bouthors.org>  Sat, 14 Jun 2014 11:13:02 +0200
+
 cron2nagios (1.0-1) unstable; urgency=low
 
   * Initial release

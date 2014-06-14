@@ -17,6 +17,9 @@
 
 set -e -o pipefail -o nounset
 
+nsca_hostname=''
+command=''
+nagios_service_name=''
 fqdn=$(hostname -f)
 return_code=0
 tempfile=$(tempfile)
