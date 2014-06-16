@@ -20,7 +20,7 @@ set -e -o pipefail -o nounset
 nsca_hostname=''
 command=''
 nagios_service_name=''
-fqdn=$(hostname -f)
+nagios_host_name=$(hostname -f)
 return_code=0
 tempfile=$(tempfile)
 trap "rm -f $tempfile" EXIT HUP INT TRAP TERM
@@ -32,12 +32,13 @@ usage()
 {
     echo "$0: Too few argument!" >&2
     echo "Usage: $0 --nsca-hostname=monitoring.isvtec.com --command='mycron foo' --nagios-service-name=service-name" >&2
+    echo "  [--nagios-host-name=HOSTNAME]" >&2
 }
 
 # ":" means required
 # "::" means optional
 TEMP=$(getopt -o h: --long nsca-hostname:,command:,nagios-service-name: \
-    -n "$0" -- "$@")
+    --long nagios-host-name:: -n "$0" -- "$@")
 
 # Check for non-GNU getopt
 if [ $? != 0 ]
@@ -63,6 +64,11 @@ do
 
 	--nagios-service-name)
 	    nagios_service_name="$2"
+	    shift 2
+	    ;;
+
+	--nagios-host-name)
+	    nagios_host_name="$2"
 	    shift 2
 	    ;;
 
@@ -107,5 +113,5 @@ fi
 # Prepend command name to the status information
 status_information="Command \"$command\": $status_information"
 
-echo -e "$fqdn\t$nagios_service_name\t$return_code\t$status_information" \
+echo -e "$nagios_host_name\t$nagios_service_name\t$return_code\t$status_information" \
     | send_nsca -H $nsca_hostname >/dev/null
