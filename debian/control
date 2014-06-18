@@ -8,6 +8,6 @@ Standards-Version: 3.9.5
 
 Package: cron2nagios
 Architecture: all
-Depends: liblockfile-bin, nsca-client, ${misc:Depends}
+Depends: nsca-client, ${misc:Depends}
 Description: Execute a cron job and send its output and return code to Nagios
  Execute a cron job and send its output and return code to Nagios
