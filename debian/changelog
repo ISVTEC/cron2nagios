@@ -1,3 +1,9 @@
+cron2nagios (1.0-5) unstable; urgency=low
+
+  * Depends on nsca when version is inferior to 2.9
+
+ -- Michael Jeanson <michael.jeanson@isvtec.com>  Wed, 18 Jun 2014 18:16:51 +0200
+
 cron2nagios (1.0-4) unstable; urgency=medium
 
   * Drop unnecessary dependency on liblockfile-bin.
