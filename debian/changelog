@@ -1,3 +1,9 @@
+cron2nagios (1.0-6) unstable; urgency=low
+
+  * Fix depend less then 2.9 on nsca.
+
+ -- Michael Jeanson <michael.jeanson@isvtec.com>  Thu, 19 Jun 2014 10:02:16 +0200
+
 cron2nagios (1.0-5) unstable; urgency=low
 
   * Depends on nsca when version is inferior to 2.9
