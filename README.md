@@ -15,6 +15,7 @@ cron2nagios --nsca-hostname=HOSTNAME \
 Nagios Configuration
 ====================
 
+```
 define service{
   use                   generic-service
   host_name             example.isvtec.net
@@ -28,3 +29,4 @@ define service{
   contact_groups        admins-housing
   notification_period   24x7
 }
+```
