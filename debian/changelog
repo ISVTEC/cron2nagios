@@ -1,3 +1,11 @@
+cron2nagios (1.0-6.1) unstable; urgency=medium
+
+  * bin/cron2nagios: we limit the message sent to 4kB because send_nsca
+    segfaults with big messages. To reproduce: send_nsca -H localhost <
+    /dev/zero
+
+ -- Cyril Bouthors <cyril@boutho.rs>  Thu, 16 Jun 2016 16:18:00 +0000
+
 cron2nagios (1.0-6) unstable; urgency=low
 
   * Fix depend less then 2.9 on nsca.

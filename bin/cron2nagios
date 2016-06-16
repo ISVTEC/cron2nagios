@@ -113,5 +113,8 @@ fi
 # Prepend command name to the status information
 status_information="Command \"$command\": $status_information"
 
+# We limit the message sent to 4kB because send_nsca segfaults with big
+# messages. To reproduce: send_nsca -H localhost < /dev/zero
 echo -e "$nagios_host_name\t$nagios_service_name\t$return_code\t$status_information" \
+    | head -c 4000 \
     | send_nsca -H $nsca_hostname >/dev/null
