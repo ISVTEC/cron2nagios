@@ -21,6 +21,7 @@ nsca_hostname=''
 command=''
 nagios_service_name=''
 nagios_host_name=$(hostname -f)
+output_ok=''
 return_code=0
 tempfile=$(tempfile)
 trap "rm -f $tempfile" EXIT HUP INT TRAP TERM
@@ -32,13 +33,13 @@ usage()
 {
     echo "$0: Too few argument!" >&2
     echo "Usage: $0 --nsca-hostname=monitoring.isvtec.com --command='mycron foo' --nagios-service-name=service-name" >&2
-    echo "  [--nagios-host-name=HOSTNAME]" >&2
+    echo "  [--nagios-host-name=HOSTNAME] [--output-ok]" >&2
 }
 
 # ":" means required
 # "::" means optional
 TEMP=$(getopt -o h: --long nsca-hostname:,command:,nagios-service-name: \
-    --long nagios-host-name:: -n "$0" -- "$@")
+    --long nagios-host-name:,output-ok:: -n "$0" -- "$@")
 
 # Check for non-GNU getopt
 if [ $? != 0 ]
@@ -72,6 +73,11 @@ do
 	    shift 2
 	    ;;
 
+        --output-ok)
+            output_ok=1
+            shift 2
+            ;;
+
 	--)
 	    shift
 	    break
@@ -97,8 +103,8 @@ then
 fi
 
 # Return critical if $command output anything. Commands are supposed to be
-# quiet if everything is OK.
-if [ $(wc -c < $tempfile) != 0 ]
+# quiet if everything is OK. Unless we set --output-ok option.
+if [ $(wc -c < $tempfile) != 0 ] && [ -z $output_ok ]
 then
     return_code=2
 fi
