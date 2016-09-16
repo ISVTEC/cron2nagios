@@ -1,3 +1,9 @@
+cron2nagios (1.0-7) unstable; urgency=medium
+
+  * #55711 add option --output-ok that will not raise an error if commade return 0 but has verbose output
+
+ -- Florent Mendoza <florent.mendoza@isvtec.com>  Fri, 16 Sep 2016 16:26:36 +0200
+
 cron2nagios (1.0-6.1) unstable; urgency=medium
 
   * bin/cron2nagios: we limit the message sent to 4kB because send_nsca
